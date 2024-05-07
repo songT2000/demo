@@ -1,0 +1,18 @@
+package com.demo.portal.test.adapter;
+
+/**
+ * 类适配器类
+ */
+public class SDAdapterTF extends TFCardImpl implements SDCard {
+    @Override
+    public String readSD() {
+        System.out.println("adapter read tf card...");
+        return readTF();
+    }
+
+    @Override
+    public void writeSd(String msg) {
+        System.out.println("adapter write tf card...");
+        writeTF(msg);
+    }
+}

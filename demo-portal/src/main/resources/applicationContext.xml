@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:aop="http://www.springframework.org/schema/aop"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/aop https://www.springframework.org/schema/aop/spring-aop.xsd http://www.springframework.org/schema/context https://www.springframework.org/schema/context/spring-context.xsd">
+    <bean id="cardDao" class="com.demo.portal.test.proxy4.CardDaoImpl"/>
+    <bean id="logDao" class="com.demo.portal.test.proxy4.LogDaoImpl"/>
+    <bean id="cardBiz" class="com.demo.portal.test.proxy4.CardBizImpl"/>
+    <bean id="myAdvice" class="com.demo.portal.test.proxy4.MyAdvice"/>
+    <!--使用context命名空间，在配置文件中开启相应的注解处理器-->
+    <context:component-scan base-package="com.demo.portal.test.proxy4"/>
+    <aop:aspectj-autoproxy/>
+    <!--配置Spring AOP-->
+<!--    <aop:config>-->
+<!--        &lt;!&ndash;指定切入点&ndash;&gt;-->
+<!--        <aop:pointcut id="pointCut" expression="execution(*-->
+<!--            com.demo.portal.test.proxy4.CardDaoImpl.*(..))"/>-->
+<!--        &lt;!&ndash;指定切面&ndash;&gt;-->
+<!--        <aop:aspect ref = "myAdvice">-->
+<!--            &lt;!&ndash;指定记录通知&ndash;&gt;-->
+<!--            <aop:before method="log" pointcut-ref="pointCut"/>-->
+<!--        </aop:aspect>-->
+<!--    </aop:config>-->
+</beans>
