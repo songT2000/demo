@@ -13,10 +13,10 @@ public class ConcreteMediator extends Mediator {
     }
 
     @Override
-    public void relay(Colleague colleague, String msg) {
+    public void relay(Colleague receiver, Colleague sender, String msg) {
         for (Colleague colleague1 : colleagues) {
-            if (colleague1.getName().equals(colleague.getName())) {
-                colleague1.receive(colleague, msg);
+            if (colleague1.getName().equals(receiver.getName())) {
+                colleague1.receive(receiver,sender, msg);
             }
         }
     }

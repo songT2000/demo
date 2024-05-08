@@ -31,7 +31,7 @@ public abstract class Colleague {
     }
 
     //接受消息
-    public abstract void receive(Colleague colleague, String msg);
+    public abstract void receive(Colleague receiver, Colleague sender, String msg);
 
     //发送消息
     public abstract void send(Colleague colleague, String msg);

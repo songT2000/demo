@@ -11,13 +11,13 @@ public class ConcreteColleague2 extends Colleague {
     }
 
     @Override
-    public void receive(Colleague colleague, String msg) {
-        System.out.println("同事[" + this.getName() + "]接收到同事[" + colleague.getName() + "]消息{" + msg + "}");
+    public void receive(Colleague receiver, Colleague sender, String msg) {
+        System.out.println("同事[" + this.getName() + "]接收到同事[" + sender.getName() + "]消息{" + msg + "}");
     }
 
     @Override
     public void send(Colleague colleague, String msg) {
         System.out.println("同事[" + this.getName() + "]发送消息{" + msg + "}到同事[" + colleague.getName() + "]");
-        this.getMediator().relay(colleague, msg);
+        this.getMediator().relay(colleague, this,  msg);
     }
 }

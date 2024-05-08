@@ -10,5 +10,6 @@ public class Client {
         remoteController.setCommand(1, new LightOnCommand(lightReceiver), new LightOnCommand(lightReceiver) );
         remoteController.onButtonWasPushed(0);
         remoteController.offButtonWasPushed(0);
+        remoteController.undoButton();
     }
 }

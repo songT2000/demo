@@ -8,6 +8,7 @@ import java.util.Map;
  */
 public class Constants {
 
+    // 攻击防御属性
     private static Map<String, Integer> attackMap = new HashMap<String, Integer>();
     private static Map<String, Integer> defenseMap = new HashMap<String, Integer>();
 

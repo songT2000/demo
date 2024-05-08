@@ -32,7 +32,8 @@ public class Client {
         ConcreteMonster monster3 = (ConcreteMonster) MonsterFactory.getMonster("troll");
         ConcreteMonster monster4 = (ConcreteMonster) MonsterFactory.getMonster("troll");
         ConcreteMonster monster5 = (ConcreteMonster) MonsterFactory.getMonster("dragon");
-
+        ConcreteMonster monster6 = (ConcreteMonster) MonsterFactory.getMonster("test");
+        ConcreteMonster monster7 = (ConcreteMonster) MonsterFactory.getMonster("test");
 
         monster.concreteName("不林肯");
         System.out.println("----------------------");
@@ -43,6 +44,10 @@ public class Client {
         monster4.concreteName("瞌睡乔");
         System.out.println("----------------------");
         monster5.concreteName("懂王");
+        System.out.println("----------------------");
+        monster6.concreteName("test");
+        System.out.println("----------------------");
+        monster7.concreteName("test");
     }
 
 }

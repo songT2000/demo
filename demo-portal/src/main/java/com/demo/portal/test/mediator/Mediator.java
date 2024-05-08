@@ -9,5 +9,5 @@ public abstract class Mediator {
     public abstract void register(Colleague colleague);
 
     //转发
-    public abstract void relay(Colleague colleague, String msg);
+    public abstract void relay(Colleague receiver, Colleague sender, String msg);
 }
