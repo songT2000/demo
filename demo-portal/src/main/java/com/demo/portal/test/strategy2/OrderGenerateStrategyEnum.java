@@ -5,8 +5,8 @@ import java.util.Map;
 
 public enum OrderGenerateStrategyEnum {
 
-    USER_ORDER_GENERATE_STRATEGY("1", "com.demo.web.test.strategy2.UserOrderGenerateStrategy"),
-    AGENT_ORDER_GENERATE_STRATEGY("2", "com.demo.web.test.strategy2.AgentOrderGenerateStrategy")
+    USER_ORDER_GENERATE_STRATEGY("1", "com.demo.portal.test.strategy2.UserOrderGenerateStrategy"),
+    AGENT_ORDER_GENERATE_STRATEGY("2", "com.demo.portal.test.strategy2.AgentOrderGenerateStrategy")
     ;
 
     private String userType;
