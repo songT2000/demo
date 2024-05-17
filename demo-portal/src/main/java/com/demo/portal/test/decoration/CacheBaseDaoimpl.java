@@ -42,6 +42,7 @@ public class CacheBaseDaoimpl<T> implements BaseDao<T>{
             }else {
                 System.out.println("Database is Ok");
                 return baseDao.get(element);
+
             }
         }
         return null;
