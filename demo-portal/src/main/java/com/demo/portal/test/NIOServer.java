@@ -67,10 +67,10 @@ public class NIOServer {
                     try {
                         socketChannel.read(byteBuffer);
                     } catch (IOException e) {
-//                        selectionKey.channel();
-//                        socketChannel.socket().close();
-//                        socketChannel.close();
-//                        return;
+                        selectionKey.channel();
+                        socketChannel.socket().close();
+                        socketChannel.close();
+                        return;
                     }
                     System.out.println("from客户端：" + new String(byteBuffer.array()));
                 } else {

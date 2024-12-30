@@ -8,12 +8,20 @@ import org.springframework.cache.annotation.EnableCaching;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.data.redis.cache.RedisCacheConfiguration;
+import org.springframework.data.redis.connection.MessageListener;
 import org.springframework.data.redis.connection.RedisConnectionFactory;
 import org.springframework.data.redis.core.*;
+import org.springframework.data.redis.listener.PatternTopic;
+import org.springframework.data.redis.listener.RedisMessageListenerContainer;
+import org.springframework.data.redis.listener.Topic;
+import org.springframework.data.redis.listener.adapter.MessageListenerAdapter;
 import org.springframework.data.redis.serializer.Jackson2JsonRedisSerializer;
 import org.springframework.data.redis.serializer.RedisSerializationContext;
 import org.springframework.data.redis.serializer.RedisSerializer;
 import org.springframework.data.redis.serializer.StringRedisSerializer;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * redis配置类
@@ -103,6 +111,34 @@ public class RedisConfig extends CachingConfigurerSupport {
     @Bean
     public ZSetOperations<String, Object> zSetOperations(RedisTemplate<String, Object> redisTemplate) {
         return redisTemplate.opsForZSet();
+    }
+
+    /**
+     * 消息监听者容器， 负责管理线程池，消息分发，分发给对应管道的监听者
+     * @return
+     */
+    @Bean
+    public RedisMessageListenerContainer container(RedisConnectionFactory factory, MessageListenerAdapter listenerAdapter){
+        RedisMessageListenerContainer container = new RedisMessageListenerContainer();
+        //设置链接工程
+        container.setConnectionFactory(factory);
+        //设置监听者绑定的管道
+        List<Topic> topicList = new ArrayList<>();
+        topicList.add(new PatternTopic("test"));
+        //设置监听者
+        container.addMessageListener(listenerAdapter, topicList);
+        return container;
+    }
+
+    /**
+     * 消息侦听适配器，能将消息委托给目标侦听器方法
+     * @param listener
+     * @return
+     */
+    @Bean
+    public MessageListenerAdapter listenerAdapter(MessageListener listener){
+        MessageListenerAdapter messageListenerAdapter = new MessageListenerAdapter(listener);
+        return messageListenerAdapter;
     }
 
 }

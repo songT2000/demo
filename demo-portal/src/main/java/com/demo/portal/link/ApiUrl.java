@@ -15,5 +15,9 @@ public class ApiUrl {
     public static final String PORTAL_USER = "/portal/uer";
 
     public static final String PORTAL_USER_HOME_INFO = "/home/info";
+    public static final String TEST_REDIS = "/test/redis";
+
+    public static final String TEST_REMOVE_LISTENER = "/test/remove/listener";
+    public static final String TEST_ADD_LISTENER = "/test/add/listener";
 
 }
